@@ -26,6 +26,10 @@ require 'action_controller/railtie'
 require 'action_mailer/railtie'
 CODE
 
+# application.rb settings
+# donot automatic generate helper file.
+environment "  config.generators.helper = false"
+
 # install jquery
 run "curl -L http://code.jquery.com/jquery.min.js > public/javascripts/jquery.js"
 run "curl -L http://github.com/rails/jquery-ujs/raw/master/src/rails.js > public/javascripts/rails.js"
