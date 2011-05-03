@@ -20,10 +20,10 @@ file 'lib/tasks/dev.rake', File.read("#{File.dirname(rails_template)}/dev.rake")
 
 # remove active_resource and test_unit
 gsub_file 'config/application.rb', /require 'rails\/all'/, <<-CODE
-  require 'rails'
-  require 'active_record/railtie'
-  require 'action_controller/railtie'
-  require 'action_mailer/railtie'
+require 'rails'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
 CODE
 
 # install jquery
@@ -33,9 +33,6 @@ run "curl -L http://github.com/rails/jquery-ujs/raw/master/src/rails.js > public
 gsub_file 'config/application.rb', /(config.action_view.javascript_expansions.*)/, 
                                    "config.action_view.javascript_expansions[:defaults] = %w(jquery rails)"
 
-# add time format
-environment 'Time::DATE_FORMATS.merge!(:default => "%Y/%m/%d %I:%M %p", :ymd => "%Y/%m/%d")'
-
 # .gitignore
 append_file '.gitignore', <<-CODE
 config/database.yml
@@ -43,6 +40,8 @@ Thumbs.db
 .DS_Store
 tmp/*
 coverage/*
+Session.vim
+*.swp
 CODE
 
 # keep tmp and log
