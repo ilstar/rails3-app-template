@@ -7,12 +7,13 @@ run "cp config/database.yml config/database.yml.example"
 # install gems
 run "rm Gemfile"
 file 'Gemfile', File.read("#{File.dirname(rails_template)}/Gemfile")
-
-# bundle install
 run "bundle install"
 
 # generate rspec
 generate "rspec:install"
+append_file '.rspec', <<-CODE
+--format documentatin
+CODE
 
 # copy files
 file 'script/watchr.rb', File.read("#{File.dirname(rails_template)}/watchr.rb")
