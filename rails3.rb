@@ -12,7 +12,7 @@ run "bundle install"
 # generate rspec
 generate "rspec:install"
 append_file '.rspec', <<-CODE
---format documentatin
+--format documentation
 CODE
 
 # copy files
