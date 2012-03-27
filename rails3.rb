@@ -15,6 +15,8 @@ append_file '.rspec', <<-CODE
 --format documentation
 CODE
 
+rake "db:create:all"
+
 # application.rb settings
 # donot automatic generate helper file.
 environment "
@@ -22,7 +24,15 @@ environment "
       g.test_framework :rspec, :fixture => false, :view_specs => false
       g.helper false
     end
+    config.active_record.whitelist_attributes = true
 "
+
+inject_into_file 'app/assets/javascripts/application.js', before: '//= require_tree .' do
+  <<-JS
+//= require jquery
+//= require jquery_ujs
+  JS
+end
 
 # .gitignore
 append_file '.gitignore', <<-CODE
