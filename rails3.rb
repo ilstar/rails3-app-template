@@ -24,8 +24,11 @@ environment "
       g.test_framework :rspec, :fixture => false, :view_specs => false
       g.helper false
     end
-    config.active_record.whitelist_attributes = true
 "
+gsub_file 'config/application.rb', /# config.active_record.whitelist_attributes = true/, 'config.active_record.whitelist_attributes = true'
+# gsub_file 'config/application.rb', /# config.i18n.default_locale = :de/, 'config.i18n.default_locale = "zh-CN"'
+# gsub_file 'config/application.rb', /# config.time_zone = 'Central Time (US & Canada)'/, 'config.time_zone = "Beijing"'
+
 
 inject_into_file 'app/assets/javascripts/application.js', before: '//= require_tree .' do
   <<-JS
