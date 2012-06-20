@@ -25,5 +25,5 @@ group :test, :development do
   gem "rspec-rails", '>= 2.8.0'
   gem "factory_girl_rails", '3.0.0'
 
-  gem 'ruby-debug19'
+  gem 'debugger'
 end
