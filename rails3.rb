@@ -5,8 +5,7 @@ run "rm app/assets/images/rails.png"
 run "cp config/database.yml config/database.yml.example"
 
 # install gems
-run "rm Gemfile"
-file 'Gemfile', File.read("#{File.dirname(rails_template)}/Gemfile")
+append_file 'Gemfile', File.read("#{File.dirname(rails_template)}/Gemfile")
 run "bundle install"
 
 # generate rspec

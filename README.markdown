@@ -4,7 +4,7 @@
 
 ## Usage
 
->  rails new your_project_name -TJ -d mysql -m rails3-app-template/rails3.rb
+>  rails new your_project_name -T -d mysql -m rails3-app-template/rails3.rb
 	
 ## License
 
