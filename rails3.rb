@@ -29,24 +29,8 @@ gsub_file 'config/application.rb', /# config.active_record.whitelist_attributes 
 # gsub_file 'config/application.rb', /# config.i18n.default_locale = :de/, 'config.i18n.default_locale = "zh-CN"'
 # gsub_file 'config/application.rb', /# config.time_zone = 'Central Time (US & Canada)'/, 'config.time_zone = "Beijing"'
 
-
-inject_into_file 'app/assets/javascripts/application.js', before: '//= require_tree .' do
-  <<-JS
-//= require jquery
-//= require jquery_ujs
-  JS
-end
-
 # .gitignore
-append_file '.gitignore', <<-CODE
-config/database.yml
-Thumbs.db
-.DS_Store
-tmp/*
-coverage/*
-Session.vim
-*.swp
-CODE
+file '.gitignore', File.read("#{File.dirname(rails_template)}/gitignore")
 
 # git commit
 git :init
